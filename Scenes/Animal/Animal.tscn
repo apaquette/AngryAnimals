@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://hry4tlce2bq2"]
 
 [ext_resource type="Texture2D" uid="uid://dplfqy5csqafm" path="res://Assets/player/parrot.png" id="1_qtpp4"]
+[ext_resource type="AudioStream" uid="uid://b5f5seu34mi1f" path="res://Assets/audio/stretch2.ogg" id="2_lib84"]
+[ext_resource type="AudioStream" uid="uid://bx43ahcn8xrer" path="res://Assets/audio/catapult.ogg" id="3_oryip"]
+[ext_resource type="AudioStream" uid="uid://bmu243wuhmcrh" path="res://Assets/audio/kick_wood.ogg" id="4_x85cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqphk"]
 radius = 19.235384
@@ -28,7 +31,10 @@ text = "Debug"
 label_settings = SubResource("LabelSettings_qtpp4")
 
 [node name="StretchSound" type="AudioStreamPlayer2D" parent="." unique_id=681839101]
+stream = ExtResource("2_lib84")
 
 [node name="LaunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1992033212]
+stream = ExtResource("3_oryip")
 
 [node name="KickSound" type="AudioStreamPlayer2D" parent="." unique_id=1752624626]
+stream = ExtResource("4_x85cc")
