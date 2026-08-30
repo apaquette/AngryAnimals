@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://hry4tlce2bq2"]
+
+[ext_resource type="Texture2D" uid="uid://dplfqy5csqafm" path="res://Assets/player/parrot.png" id="1_qtpp4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqphk"]
+radius = 19.235384
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtpp4"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="RigidBody2D" unique_id=1917934087]
+contact_monitor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=692591589]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_qtpp4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=472954811]
+shape = SubResource("CircleShape2D_vqphk")
+
+[node name="Debug" type="Label" parent="." unique_id=1555867352]
+offset_left = -21.0
+offset_top = -42.0
+offset_right = 29.0
+offset_bottom = -19.0
+text = "Debug"
+label_settings = SubResource("LabelSettings_qtpp4")
+
+[node name="StretchSound" type="AudioStreamPlayer2D" parent="." unique_id=681839101]
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1992033212]
+
+[node name="KickSound" type="AudioStreamPlayer2D" parent="." unique_id=1752624626]
