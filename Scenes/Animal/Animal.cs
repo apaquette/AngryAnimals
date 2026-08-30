@@ -1,21 +1,37 @@
 using Godot;
-using System;
 
 public partial class Animal : RigidBody2D
 {
 	[Export] private Label _label;
-	[Export] private AudioStreamPlayer2D _stretchSound;
-	[Export] private AudioStreamPlayer2D _launchSound;
-	[Export] private AudioStreamPlayer2D _kickSound;
-	// Called when the node enters the scene tree for the first time.
+	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
+
+	private bool _isDragging = false;
+	private Vector2 _dragStart = Vector2.Zero, _start = Vector2.Zero;
+
 	public override void _Ready()
 	{
+		InputEvent += OnInputEvent;
+		_start = Position;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-		string ds = $"SL:{Sleeping} FR: {Freeze}";
+		string ds = $"SL:{Sleeping} FR: {Freeze}\n Drag: {_isDragging} Drag Start: {_dragStart} Start: {_start}";
 		_label.Text = ds;
 	}
+
+	private void StartDragging()
+	{
+		_isDragging = true;
+		_dragStart = GetGlobalMousePosition();
+	}
+
+	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
+    {
+		if (@event.IsActionPressed("drag"))
+		{
+			InputEvent -= OnInputEvent;
+			StartDragging();
+		}
+    }
 }

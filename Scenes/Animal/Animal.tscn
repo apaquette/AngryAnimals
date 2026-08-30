@@ -32,12 +32,13 @@ texture = ExtResource("1_qtpp4")
 shape = SubResource("CircleShape2D_vqphk")
 
 [node name="Debug" type="Label" parent="." unique_id=1555867352]
-offset_left = -21.0
-offset_top = -42.0
-offset_right = 29.0
-offset_bottom = -19.0
+offset_left = -22.0
+offset_top = -70.0
+offset_right = 28.0
+offset_bottom = -47.0
 theme_override_constants/outline_size = 4
-text = "Debug"
+text = "Debug
+"
 
 [node name="StretchSound" type="AudioStreamPlayer2D" parent="." unique_id=681839101]
 stream = ExtResource("2_lib84")
