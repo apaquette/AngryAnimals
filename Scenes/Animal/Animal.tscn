@@ -12,7 +12,7 @@ radius = 19.235384
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="RigidBody2D" unique_id=1917934087]
+[node name="Animal" type="RigidBody2D" unique_id=1917934087]
 contact_monitor = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=692591589]
