@@ -5,11 +5,17 @@
 [ext_resource type="AudioStream" uid="uid://bx43ahcn8xrer" path="res://Assets/audio/catapult.ogg" id="3_oryip"]
 [ext_resource type="AudioStream" uid="uid://bmu243wuhmcrh" path="res://Assets/audio/kick_wood.ogg" id="4_x85cc"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lib84"]
+bounce = 0.3
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqphk"]
 radius = 19.235384
 
 [node name="Animal" type="RigidBody2D" unique_id=1917934087]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_lib84")
 contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=692591589]
 scale = Vector2(0.15, 0.15)
