@@ -8,10 +8,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqphk"]
 radius = 19.235384
 
-[sub_resource type="LabelSettings" id="LabelSettings_qtpp4"]
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Animal" type="RigidBody2D" unique_id=1917934087]
 contact_monitor = true
 
@@ -27,8 +23,8 @@ offset_left = -21.0
 offset_top = -42.0
 offset_right = 29.0
 offset_bottom = -19.0
+theme_override_constants/outline_size = 4
 text = "Debug"
-label_settings = SubResource("LabelSettings_qtpp4")
 
 [node name="StretchSound" type="AudioStreamPlayer2D" parent="." unique_id=681839101]
 stream = ExtResource("2_lib84")
