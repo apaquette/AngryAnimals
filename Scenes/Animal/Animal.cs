@@ -6,7 +6,7 @@ public partial class Animal : RigidBody2D
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
 	private bool _isDragging = false;
-	private Vector2 _dragStart = Vector2.Zero, _start = Vector2.Zero;
+	private Vector2 _dragStart = Vector2.Zero, _start = Vector2.Zero, _dragVector = Vector2.Zero;
 
 	public override void _Ready()
 	{
@@ -16,7 +16,24 @@ public partial class Animal : RigidBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		string ds = $"SL:{Sleeping} FR: {Freeze}\n Drag: {_isDragging} Drag Start: {_dragStart} Start: {_start}";
+		HandleDragging();
+		Debug();
+	}
+
+	private void HandleDragging()
+	{
+		if (_isDragging)
+		{
+			_dragVector = GetGlobalMousePosition() - _dragStart;
+			Position = _start + _dragVector;
+		}
+	}
+
+	private void Debug()
+	{
+		string ds = $"SL:{Sleeping} FR: {Freeze}\n";
+		ds += $"Drag: {_isDragging} Drag Start: {_dragStart} Start: {_start}\n";
+		ds += $"DragVec: {_dragVector}";
 		_label.Text = ds;
 	}
 
