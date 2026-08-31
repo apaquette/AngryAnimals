@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Animal : RigidBody2D
 {
+	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
 	[Export] private Label _label;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
@@ -25,6 +26,7 @@ public partial class Animal : RigidBody2D
 		if (_isDragging)
 		{
 			_dragVector = GetGlobalMousePosition() - _dragStart;
+			_dragVector = _dragVector.Clamp(DRAG_LIM_MIN, DRAG_LIM_MAX);
 			Position = _start + _dragVector;
 		}
 	}
