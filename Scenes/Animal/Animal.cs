@@ -3,11 +3,29 @@ using Godot;
 public partial class Animal : RigidBody2D
 {
 	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
+	private const float IMPULSE_MULT = 20.0f;
 	[Export] private Label _label;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
 	private bool _isDragging = false;
 	private Vector2 _dragStart = Vector2.Zero, _start = Vector2.Zero, _dragVector = Vector2.Zero;
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event.IsActionReleased("drag") && _isDragging)
+		{
+			CallDeferred(nameof(HandleRelease));
+		}
+	}
+
+	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
+    {
+		if (@event.IsActionPressed("drag"))
+		{
+			InputEvent -= OnInputEvent;
+			StartDragging();
+		}
+    }
 
 	public override void _Ready()
 	{
@@ -19,6 +37,14 @@ public partial class Animal : RigidBody2D
 	{
 		HandleDragging();
 		Debug();
+	}
+
+	private void HandleRelease()
+	{
+		_launchSound.Play();
+		_isDragging = false;
+		Freeze = false;
+		ApplyCentralImpulse(CalculateImpulse());
 	}
 
 	private void HandleDragging()
@@ -45,12 +71,6 @@ public partial class Animal : RigidBody2D
 		_dragStart = GetGlobalMousePosition();
 	}
 
-	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
-    {
-		if (@event.IsActionPressed("drag"))
-		{
-			InputEvent -= OnInputEvent;
-			StartDragging();
-		}
-    }
+	private Vector2 CalculateImpulse() => _dragVector * -IMPULSE_MULT;
+	
 }
