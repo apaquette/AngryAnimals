@@ -72,8 +72,8 @@ public partial class Animal : RigidBody2D
 	{
 		if(_isDead) return;
 		_isDead = true;
-		QueueFree();
 		SignalHub.EmitOnAnimalDied();
+		QueueFree();
 	}
 	
 }

@@ -3,8 +3,8 @@ using System;
 
 public partial class LevelBase : Node
 {
-	[Export] private Marker2D _animalStart;
-	[Export] private PackedScene _animal;
+	[Export] private Marker2D _startPosition;
+	[Export] private PackedScene _animalScene;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,8 +19,8 @@ public partial class LevelBase : Node
 
 	private void SpawnAnimal()
 	{
-        var animal = _animal.Instantiate<Animal>();
-		animal.Position = _animalStart.Position;
-        AddChild(animal);
+        Animal animal = _animalScene.Instantiate<Animal>();
+		animal.GlobalPosition = _startPosition.GlobalPosition;
+		CallDeferred(MethodName.AddChild, animal);
 	}
 }

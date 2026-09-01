@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://hry4tlce2bq2" path="res://Scenes/Animal/Animal.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://uidfsm6s7nw4" path="res://Scenes/Water/Water.tscn" id="3_78m1b"]
 
-[node name="LevelBase" type="Node" unique_id=1485272243 node_paths=PackedStringArray("_animalStart")]
+[node name="LevelBase" type="Node" unique_id=1485272243 node_paths=PackedStringArray("_startPosition")]
 script = ExtResource("1_78m1b")
-_animalStart = NodePath("AnimalStart")
-_animal = ExtResource("2_bgw71")
+_startPosition = NodePath("AnimalStart")
+_animalScene = ExtResource("2_bgw71")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1408951295]
 anchors_preset = 15
