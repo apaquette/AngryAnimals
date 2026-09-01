@@ -18,26 +18,27 @@ public partial class Animal : RigidBody2D
 		}
 	}
 
-	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
-    {
-		if (@event.IsActionPressed("drag"))
-		{
-			InputEvent -= OnInputEvent;
-			StartDragging();
-		}
-    }
-
 	public override void _Ready()
 	{
 		InputEvent += OnInputEvent;
 		_start = Position;
 	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		HandleDragging();
 		Debug();
 	}
+
+	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
+    {
+		if (@event.IsActionPressed("drag"))
+		{
+			InputEvent -= OnInputEvent;
+			_isDragging = true;
+			_dragStart = GetGlobalMousePosition();
+		}
+    }
 
 	private void HandleRelease()
 	{
@@ -65,12 +66,6 @@ public partial class Animal : RigidBody2D
 		_label.Text = ds;
 	}
 
-	private void StartDragging()
-	{
-		_isDragging = true;
-		_dragStart = GetGlobalMousePosition();
-	}
-
 	private Vector2 CalculateImpulse() => _dragVector * -IMPULSE_MULT;
 
 	public void Die()
@@ -78,6 +73,7 @@ public partial class Animal : RigidBody2D
 		if(_isDead) return;
 		_isDead = true;
 		QueueFree();
+		SignalHub.EmitOnAnimalDied();
 	}
 	
 }
