@@ -7,7 +7,7 @@ public partial class Animal : RigidBody2D
 	[Export] private Label _label;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
-	private bool _isDragging = false;
+	private bool _isDragging = false, _isDead = false;
 	private Vector2 _dragStart = Vector2.Zero, _start = Vector2.Zero, _dragVector = Vector2.Zero;
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -72,5 +72,12 @@ public partial class Animal : RigidBody2D
 	}
 
 	private Vector2 CalculateImpulse() => _dragVector * -IMPULSE_MULT;
+
+	public void Die()
+	{
+		if(_isDead) return;
+		_isDead = true;
+		QueueFree();
+	}
 	
 }
