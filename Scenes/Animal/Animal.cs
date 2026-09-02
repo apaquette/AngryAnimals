@@ -46,6 +46,7 @@ public partial class Animal : RigidBody2D
 		_isDragging = false;
 		Freeze = false;
 		ApplyCentralImpulse(CalculateImpulse());
+		SignalHub.EmitOnAttemptMade();
 	}
 
 	private void HandleDragging()
