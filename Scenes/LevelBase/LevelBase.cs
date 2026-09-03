@@ -12,6 +12,11 @@ public partial class LevelBase : Node
 		SignalHub.Instance.Connect(SignalHub.SignalName.OnAnimalDie, Callable.From(SpawnAnimal));
 	}
 
+    public override void _EnterTree()
+    {
+        Cup.NumCups = 0;
+    }
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

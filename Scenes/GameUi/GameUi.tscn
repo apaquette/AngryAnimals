@@ -2,8 +2,17 @@
 
 [ext_resource type="Script" uid="uid://ba1gp52qtmut8" path="res://Scenes/GameUi/GameUi.cs" id="1_anb74"]
 [ext_resource type="LabelSettings" uid="uid://cjc8vk3lxuswc" path="res://Resources/UiLabel48.tres" id="1_mb7aw"]
+[ext_resource type="FontFile" uid="uid://de6l4ame7505i" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="3_anolp"]
+[ext_resource type="AudioStream" uid="uid://jvg4j101h1ch" path="res://Assets/audio/jazzyfrenchy.mp3" id="4_tt7lr"]
 
-[node name="GameUi" type="Control" unique_id=64118547 node_paths=PackedStringArray("_attemptsLabel", "_levellabel")]
+[sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
+font = ExtResource("3_anolp")
+font_size = 96
+font_color = Color(0.4117647, 1, 1, 1)
+outline_size = 16
+outline_color = Color(3.4894794e-07, 0.22300404, 0.22512576, 1)
+
+[node name="GameUi" type="Control" unique_id=64118547 node_paths=PackedStringArray("_attemptsLabel", "_levellabel", "_vbGameOver", "_music")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +23,8 @@ mouse_filter = 2
 script = ExtResource("1_anb74")
 _attemptsLabel = NodePath("MarginContainer/VBoxContainer/AttemptsLabel")
 _levellabel = NodePath("MarginContainer/VBoxContainer/LevelLabel")
+_vbGameOver = NodePath("VBGameOver")
+_music = NodePath("Music")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=334446227]
 layout_mode = 0
@@ -34,3 +45,29 @@ label_settings = ExtResource("1_mb7aw")
 layout_mode = 2
 text = "Attempts 000"
 label_settings = ExtResource("1_mb7aw")
+
+[node name="VBGameOver" type="VBoxContainer" parent="." unique_id=147583006]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBGameOver" unique_id=1923953459]
+layout_mode = 2
+text = "LEVEL COMPLETE"
+label_settings = SubResource("LabelSettings_tt7lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1732166670]
+stream = ExtResource("4_tt7lr")
+parameters/looping = true

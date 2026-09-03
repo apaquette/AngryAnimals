@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AngryAnimals"
-run/main_scene="uid://cs25yy3dbkrts"
+run/main_scene="uid://cks684nwp21js"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
