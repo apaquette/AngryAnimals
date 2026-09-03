@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Animal : RigidBody2D
@@ -21,10 +22,13 @@ public partial class Animal : RigidBody2D
 	public override void _Ready()
 	{
 		InputEvent += OnInputEvent;
+		SleepingStateChanged += OnSleepingStateChanged;
 		_start = Position;
 	}
 
-	public override void _PhysicsProcess(double delta)
+    
+
+    public override void _PhysicsProcess(double delta)
 	{
 		HandleDragging();
 		Debug();
@@ -76,5 +80,19 @@ public partial class Animal : RigidBody2D
 		SignalHub.EmitOnAnimalDied();
 		QueueFree();
 	}
+
+	private void OnSleepingStateChanged()
+    {
+        if(!Sleeping) return;
+
+		foreach (var body in GetCollidingBodies())
+		{		
+			if(body is Cup cup)
+			{
+				cup.Die();
+			}
+		}
+		Die();
+    }
 	
 }

@@ -11,11 +11,11 @@ public partial class GameUi : Control
 	{
 		OnAttemptMade();
 		SignalHub.Instance.Connect(SignalHub.SignalName.OnAttemptMade, Callable.From(OnAttemptMade));
+		
 	}
 
 	private void OnAttemptMade()
 	{
-		_attempts++;
-		_attemptsLabel.Text = $"Attempts: {_attempts}";
+		_attemptsLabel.Text = $"Attempts: {++_attempts}";
 	}
 }
