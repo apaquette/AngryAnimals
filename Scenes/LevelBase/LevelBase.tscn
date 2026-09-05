@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://hry4tlce2bq2" path="res://Scenes/Animal/Animal.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://uidfsm6s7nw4" path="res://Scenes/Water/Water.tscn" id="3_78m1b"]
 [ext_resource type="PackedScene" uid="uid://bd21dabd3m375" path="res://Scenes/GameUi/GameUi.tscn" id="5_lmtt4"]
-[ext_resource type="PackedScene" uid="uid://cmr0ohs8u1emb" path="res://Scenes/Cup/Cup.tscn" id="6_ooqsx"]
 
 [node name="LevelBase" type="Node" unique_id=1485272243 node_paths=PackedStringArray("_startPosition")]
 script = ExtResource("1_78m1b")
@@ -27,6 +26,3 @@ position = Vector2(576, 640)
 position = Vector2(95, 280)
 
 [node name="GameUi" parent="." unique_id=64118547 instance=ExtResource("5_lmtt4")]
-
-[node name="Cup" parent="." unique_id=1793186387 instance=ExtResource("6_ooqsx")]
-position = Vector2(542, 429)
