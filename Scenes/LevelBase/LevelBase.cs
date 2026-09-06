@@ -5,7 +5,15 @@ public partial class LevelBase : Node
 {
 	[Export] private Marker2D _startPosition;
 	[Export] private PackedScene _animalScene;
-	// Called when the node enters the scene tree for the first time.
+	[Export] private PackedScene _mainScene;
+    // Called when the node enters the scene tree for the first time.
+    public override void _UnhandledInput(InputEvent @event)
+    {
+		if (@event.IsActionPressed("ui_cancel"))
+		{
+			GetTree().ChangeSceneToPacked(_mainScene);
+		}
+    }
 	public override void _Ready()
 	{
 		SpawnAnimal();
@@ -16,11 +24,6 @@ public partial class LevelBase : Node
     {
         Cup.NumCups = 0;
     }
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 
 	private void SpawnAnimal()
 	{

@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://c532fpfc0w364" path="res://Scenes/LevelBase/LevelBase.cs" id="1_78m1b"]
 [ext_resource type="PackedScene" uid="uid://hry4tlce2bq2" path="res://Scenes/Animal/Animal.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://uidfsm6s7nw4" path="res://Scenes/Water/Water.tscn" id="3_78m1b"]
+[ext_resource type="PackedScene" uid="uid://cs25yy3dbkrts" path="res://Scenes/Main/Main.tscn" id="3_ooqsx"]
 [ext_resource type="PackedScene" uid="uid://bd21dabd3m375" path="res://Scenes/GameUi/GameUi.tscn" id="5_lmtt4"]
 
 [node name="LevelBase" type="Node" unique_id=1485272243 node_paths=PackedStringArray("_startPosition")]
 script = ExtResource("1_78m1b")
 _startPosition = NodePath("AnimalStart")
 _animalScene = ExtResource("2_bgw71")
+_mainScene = ExtResource("3_ooqsx")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1408951295]
 anchors_preset = 15

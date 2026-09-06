@@ -22,6 +22,7 @@ public partial class GameUi : Control
 
 		_vbGameOver.Show();
 		_music.Play();
+		ScoreManager.SetScore(_attempts);
     }
 
     private void OnAttemptMade()
