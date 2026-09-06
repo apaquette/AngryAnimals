@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cs25yy3dbkrts"]
 
 [ext_resource type="Texture2D" uid="uid://diintowtp2sf7" path="res://Assets/env/MainBG.png" id="1_p8rbg"]
+[ext_resource type="PackedScene" uid="uid://4tij1vvjmvs" path="res://Scenes/LevelButton/LevelButton.tscn" id="2_qtv3y"]
 
 [node name="Main" type="Control" unique_id=1204224647]
 layout_mode = 3
@@ -19,3 +20,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p8rbg")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1183356826]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="LevelButton" parent="HBoxContainer" unique_id=1544622357 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HBoxContainer" unique_id=213893557 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+_levelNumber = 2
+
+[node name="LevelButton3" parent="HBoxContainer" unique_id=2056408231 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+_levelNumber = 3

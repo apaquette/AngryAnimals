@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://4tij1vvjmvs"]
+
+[ext_resource type="Texture2D" uid="uid://bbmuewb6qb7ih" path="res://Assets/ui/panel_beige.png" id="1_145gk"]
+[ext_resource type="LabelSettings" uid="uid://bjuwsmlv5ff7b" path="res://Resources/UiLabelLight48.tres" id="2_145gk"]
+[ext_resource type="Script" uid="uid://foeravn2tj54" path="res://Scenes/LevelButton/LevelButton.cs" id="2_anpwf"]
+[ext_resource type="LabelSettings" uid="uid://bxpisyt66ujsb" path="res://Resources/UiLabelLight28.tres" id="3_3r2e7"]
+
+[node name="LevelButton" type="TextureButton" unique_id=1544622357 node_paths=PackedStringArray("_levelLabel")]
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset = Vector2(50, 50)
+texture_normal = ExtResource("1_145gk")
+script = ExtResource("2_anpwf")
+_levelLabel = NodePath("VBoxContainer/LevelLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=915782414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=237626103]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer" unique_id=445264390]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "3"
+label_settings = ExtResource("2_145gk")
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=150952417]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0000"
+label_settings = ExtResource("3_3r2e7")
