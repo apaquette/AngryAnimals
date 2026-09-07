@@ -52,6 +52,7 @@ stream = ExtResource("3_oryip")
 
 [node name="KickSound" type="AudioStreamPlayer2D" parent="." unique_id=1752624626]
 stream = ExtResource("4_x85cc")
+volume_db = -10.035
 
 [node name="ArrowSprite" type="Sprite2D" parent="." unique_id=1490410234]
 scale = Vector2(0.3, 0.3)

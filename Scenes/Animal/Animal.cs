@@ -25,6 +25,7 @@ public partial class Animal : RigidBody2D
 	{
 		InputEvent += OnInputEvent;
 		SleepingStateChanged += OnSleepingStateChanged;
+		BodyEntered += OnBodyEntered;
 		_start = Position;
 		_arrowScaleX = _arrowSprite.Scale.X;
 		_arrowSprite.Hide();
@@ -46,6 +47,7 @@ public partial class Animal : RigidBody2D
 			_isDragging = true;
 			_dragStart = GetGlobalMousePosition();
 			_arrowSprite.Show();
+			_stretchSound.Play();
 		}
     }
 
@@ -113,4 +115,11 @@ public partial class Animal : RigidBody2D
 		Die();
     }
 	
+	private void OnBodyEntered(Node body)
+    {
+        if(body is Cup && !_kickSound.Playing)
+		{
+			_kickSound.Play();
+		}
+    }
 }
