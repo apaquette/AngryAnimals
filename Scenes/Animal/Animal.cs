@@ -1,10 +1,11 @@
 using System;
+using System.Linq;
 using Godot;
 
 public partial class Animal : RigidBody2D
 {
 	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
-	private const float IMPULSE_MULT = 20.0f, IMUPLSE_MAX = 2000.0f;
+	private const float IMPULSE_MULT = 12.0f, IMUPLSE_MAX = 2000.0f;
 	[Export] private Label _label;
 	[Export] private Sprite2D _arrowSprite;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
@@ -95,7 +96,7 @@ public partial class Animal : RigidBody2D
 
 	public void Die()
 	{
-		if(_isDead) return;
+		if(_isDead) return; // prevent multiple calls to Die
 		_isDead = true;
 		SignalHub.EmitOnAnimalDied();
 		QueueFree();
@@ -105,14 +106,11 @@ public partial class Animal : RigidBody2D
     {
         if(!Sleeping) return;
 
-		foreach (var body in GetCollidingBodies())
+		foreach (var body in GetCollidingBodies().Where(b => b is Cup))
 		{		
-			if(body is Cup cup)
-			{
-				cup.Die();
-			}
+			(body as Cup).Die(); // invoke Die on cup
 		}
-		Die();
+		Die(); // invoke Die on animal
     }
 	
 	private void OnBodyEntered(Node body)
