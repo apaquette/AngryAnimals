@@ -1,11 +1,10 @@
-using System;
 using System.Linq;
 using Godot;
 
 public partial class Animal : RigidBody2D
 {
 	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
-	private const float IMPULSE_MULT = 15.0f, IMUPLSE_MAX = 2000.0f;
+	private const float IMPULSE_MULT = 18.0f, IMUPLSE_MAX = 2000.0f;
 	[Export] private Sprite2D _arrowSprite;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
@@ -32,7 +31,6 @@ public partial class Animal : RigidBody2D
 	}
 
     
-
     public override void _PhysicsProcess(double delta) 
 	{
 		if (_isDragging)
