@@ -6,7 +6,6 @@ public partial class Animal : RigidBody2D
 {
 	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
 	private const float IMPULSE_MULT = 12.0f, IMUPLSE_MAX = 2000.0f;
-	[Export] private Label _label;
 	[Export] private Sprite2D _arrowSprite;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
@@ -37,7 +36,6 @@ public partial class Animal : RigidBody2D
     public override void _PhysicsProcess(double delta)
 	{
 		HandleDragging();
-		Debug();
 	}
 
 	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
@@ -73,13 +71,6 @@ public partial class Animal : RigidBody2D
 		}
 	}
 
-	private void Debug()
-	{
-		string ds = $"SL:{Sleeping} FR: {Freeze}\n";
-		ds += $"Drag: {_isDragging} Drag Start: {_dragStart} Start: {_start}\n";
-		ds += $"DragVec: {_dragVector}";
-		_label.Text = ds;
-	}
 
 	private void ScaleArrow()
 	{
