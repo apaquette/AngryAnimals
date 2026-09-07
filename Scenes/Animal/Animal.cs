@@ -5,7 +5,7 @@ using Godot;
 public partial class Animal : RigidBody2D
 {
 	private readonly Vector2 DRAG_LIM_MIN = new(-60,0), DRAG_LIM_MAX = new(0,60);
-	private const float IMPULSE_MULT = 12.0f, IMUPLSE_MAX = 2000.0f;
+	private const float IMPULSE_MULT = 15.0f, IMUPLSE_MAX = 2000.0f;
 	[Export] private Sprite2D _arrowSprite;
 	[Export] private AudioStreamPlayer2D _stretchSound, _launchSound, _kickSound;
 
@@ -33,9 +33,15 @@ public partial class Animal : RigidBody2D
 
     
 
-    public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta) 
 	{
-		HandleDragging();
+		if (_isDragging)
+		{
+			_dragVector = GetGlobalMousePosition() - _dragStart;
+			_dragVector = _dragVector.Clamp(DRAG_LIM_MIN, DRAG_LIM_MAX);
+			Position = _start + _dragVector;
+			ScaleArrow();
+		}
 	}
 
 	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
@@ -58,17 +64,6 @@ public partial class Animal : RigidBody2D
 		ApplyCentralImpulse(CalculateImpulse());
 		_arrowSprite.Hide();
 		SignalHub.EmitOnAttemptMade();
-	}
-
-	private void HandleDragging()
-	{
-		if (_isDragging)
-		{
-			_dragVector = GetGlobalMousePosition() - _dragStart;
-			_dragVector = _dragVector.Clamp(DRAG_LIM_MIN, DRAG_LIM_MAX);
-			Position = _start + _dragVector;
-			ScaleArrow();
-		}
 	}
 
 
@@ -95,7 +90,7 @@ public partial class Animal : RigidBody2D
 
 	private void OnSleepingStateChanged()
     {
-        if(!Sleeping) return;
+        if(!Sleeping) return;	// wait until animal isn't moving anymore
 
 		foreach (var body in GetCollidingBodies().Where(b => b is Cup))
 		{		
