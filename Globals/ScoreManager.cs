@@ -20,10 +20,7 @@ public partial class ScoreManager : Node
 		Instance.SaveScoresToFile();
 	}
 
-	public static int GetBestScoreForLevel(int level)
-	{
-		return Instance.LevelScores.GetBestScore(level);
-	}
+	public static int GetBestScoreForLevel(int level) =>Instance.LevelScores.GetBestScore(level);
 
 	private void LoadScoresFromFile()
 	{

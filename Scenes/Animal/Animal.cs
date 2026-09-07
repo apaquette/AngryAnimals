@@ -30,7 +30,6 @@ public partial class Animal : RigidBody2D
 		_arrowSprite.Hide();
 	}
 
-    
     public override void _PhysicsProcess(double delta) 
 	{
 		if (_isDragging)
@@ -91,7 +90,7 @@ public partial class Animal : RigidBody2D
         if(!Sleeping) return;	// wait until animal isn't moving anymore
 
 		foreach (var body in GetCollidingBodies().Where(b => b is Cup))
-		{		
+		{
 			(body as Cup).Die(); // invoke Die on cup
 		}
 		Die(); // invoke Die on animal

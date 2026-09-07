@@ -13,22 +13,8 @@ public partial class NextLevelButton : TextureButton
 		MouseExited += OnMouseExited;
 	}
 
-	private void NextLevel()
-	{
-		GetTree().ChangeSceneToFile($"res://Scenes/LevelBase/Level{++ScoreManager.LevelSelected}.tscn");
-	}
-
-	private void MainMenu()
-	{
-		GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
-	}
-
-	private void OnMouseEntered()
-	{
-		Scale = new Vector2(1.1f, 1.1f); // scale the button
-	}
-	private void OnMouseExited()
-	{
-		Scale = new Vector2(1, 1); // scale the button back to normal
-	}
+	private void NextLevel() => GetTree().ChangeSceneToFile($"res://Scenes/LevelBase/Level{++ScoreManager.LevelSelected}.tscn");
+	private void MainMenu() => GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
+	private void OnMouseEntered() => Scale = new Vector2(1.1f, 1.1f); // scale the button
+	private void OnMouseExited() => Scale = new Vector2(1, 1); // scale the button back to normal	{
 }

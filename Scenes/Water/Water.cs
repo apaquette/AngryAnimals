@@ -15,14 +15,6 @@ public partial class Water : Area2D
 		_splashSound.GlobalPosition = body.GlobalPosition;
 		_splashSound.Play();
 
-		if(body is Animal animal)
-		{
-			animal.Die();
-		}
+		if(body is Animal animal)animal.Die();
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
 }

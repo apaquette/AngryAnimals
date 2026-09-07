@@ -22,12 +22,6 @@ public partial class LevelButton : TextureButton
         GetTree().ChangeSceneToFile($"res://Scenes/LevelBase/Level{_levelNumber}.tscn");
     }
 
-    private void OnMouseEntered()
-    {
-		Scale = new Vector2(1.1f, 1.1f); // scale the button
-    }
-    private void OnMouseExited()
-    {
-		Scale = new Vector2(1, 1); // scale the button back to normal
-    }
+    private void OnMouseEntered() => Scale = new Vector2(1.1f, 1.1f); // scale the button
+    private void OnMouseExited() => Scale = new Vector2(1, 1); // scale the button back to normal
 }
