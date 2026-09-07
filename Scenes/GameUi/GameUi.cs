@@ -11,6 +11,7 @@ public partial class GameUi : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_levellabel.Text = $"Level: {ScoreManager.LevelSelected}";
 		OnAttemptMade();
 		_vbGameOver.Hide();
 		SignalHub.Instance.Connect(SignalHub.SignalName.OnAttemptMade, Callable.From(OnAttemptMade));
