@@ -11,14 +11,12 @@ public partial class Cup : StaticBody2D
 		_animationPlayer.AnimationFinished += OnAnimationFinished;
 	}
 
+	// Destroy cup when vanish animation is finished
     private void OnAnimationFinished(StringName animName)
     {
         QueueFree();
 		SignalHub.EmitOnCupDestroyed(--NumCups);
     }
 
-    public void Die()
-	{
-		_animationPlayer.Play("vanish");
-	}
+    public void Die() => _animationPlayer.Play("vanish");
 }

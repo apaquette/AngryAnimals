@@ -12,6 +12,7 @@ public partial class GameUi : Control
 	public override void _Ready()
 	{
 		OnAttemptMade();
+		_vbGameOver.Hide();
 		SignalHub.Instance.Connect(SignalHub.SignalName.OnAttemptMade, Callable.From(OnAttemptMade));
 		SignalHub.Instance.Connect(SignalHub.SignalName.OnCupDestroyed, Callable.From<int>(OnCupDestroyed));
 	}

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba1gp52qtmut8" path="res://Scenes/GameUi/GameUi.cs" id="1_anb74"]
 [ext_resource type="LabelSettings" uid="uid://cjc8vk3lxuswc" path="res://Resources/UiLabel48.tres" id="1_mb7aw"]
 [ext_resource type="FontFile" uid="uid://de6l4ame7505i" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="3_anolp"]
+[ext_resource type="PackedScene" uid="uid://dummx376ogcap" path="res://Scenes/NextLevelButton/NextLevelButton.tscn" id="4_5hvfd"]
 [ext_resource type="AudioStream" uid="uid://jvg4j101h1ch" path="res://Assets/audio/jazzyfrenchy.mp3" id="4_tt7lr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
@@ -47,7 +48,6 @@ text = "Attempts 000"
 label_settings = ExtResource("1_mb7aw")
 
 [node name="VBGameOver" type="VBoxContainer" parent="." unique_id=147583006]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,6 +67,10 @@ text = "LEVEL COMPLETE"
 label_settings = SubResource("LabelSettings_tt7lr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NextLevelButton" parent="VBGameOver" unique_id=893563074 instance=ExtResource("4_5hvfd")]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1732166670]
 stream = ExtResource("4_tt7lr")
