@@ -6,6 +6,7 @@ public partial class ScoreManager : Node
 	public static ScoreManager Instance { get; private set; }
 	public LevelScores LevelScores { get; private set; } = new();
 	public static int LevelSelected { get; set; } = 1;
+	public static int MaxLevel { get; set; } = 3;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

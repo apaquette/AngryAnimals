@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dummx376ogcap"]
+
+[ext_resource type="Texture2D" uid="uid://bbmuewb6qb7ih" path="res://Assets/ui/panel_beige.png" id="1_xlgvx"]
+[ext_resource type="Script" uid="uid://b1n7vlag1pohy" path="res://Scenes/NextLevelButton/NextLevelButton.cs" id="2_tdw2b"]
+[ext_resource type="FontFile" uid="uid://de6l4ame7505i" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="2_xlgvx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdw2b"]
+font = ExtResource("2_xlgvx")
+font_size = 38
+outline_size = 5
+outline_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="NextLevelButton" type="TextureButton" unique_id=893563074 node_paths=PackedStringArray("_label")]
+custom_minimum_size = Vector2(300, 100)
+offset_right = 300.0
+offset_bottom = 100.0
+pivot_offset = Vector2(150, 50)
+texture_normal = ExtResource("1_xlgvx")
+stretch_mode = 0
+script = ExtResource("2_tdw2b")
+_label = NodePath("VBoxContainer/Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=44615498]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=1562369870]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1214064701]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next Level"
+label_settings = SubResource("LabelSettings_tdw2b")
